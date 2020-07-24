@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    {% block header %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>BingoOnline.com</title>
+    <!-- <script src="{/static/script13.js"></script> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% endblock %}
+    <body>
+        <!-- {% for i in list:%}
+            <h1>{{i}}</h1>
+            {%endfor%} -->
+        <h1 style="text-align: center ">Bingo Online</h1>
+        <h1 id="ABC"> </h1>
+        <h3 style="text-align: center" ;>Recent Number: </h3>
+        <!-- <button  onclick="Number()"; id="nextNumButton">Next Number</button> -->
+        <!-- <button onclick="Num1()"></button> -->
+        <form action="/housie" method="post">
+            <button id="Next" name="Next">Next Number</button>
+        </form>
+        <div style="text-align: center; font-size: 40px" ; id="recentNumber">{{ list[-1]}}</div>
+        <!-- <button onclick="addPrize()" ; id="addprize">Add prize</button>
+            <br><br>
+            
+            <table id="wins">
+              <tr>
+                <th>Win</th>
+                <th>Prize</th>
+                <th>Person</th>
+              </tr>
+              <tr>
+                <td><input ></input></td>
+                <td><input ></input></td>
+                <td><input ></input></td>
+              </tr>
+            </table>
+            <br><br> -->
+        <table id="maintable">
+          {%if list[0] != "ALL DONE!!"%}
+
+            {% for i in range(0,9)%}
+              <tr>
+                {% for k in range(1,11) %}
+                  {% if i*10+k in list %}
+                    <td style="background-color: palevioletred;">{{i*10+k}}</td>
+                  {% else %}
+                    <td>{{i*10+k}}</td>
+                  {% endif %}
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          {%endif%}
+
+          {%if list[0] == "ALL DONE!!"%}
+            {% for i in range(0,9)%}
+              <tr>
+                {% for k in range(1,11) %}
+                    <td style="background-color: skyblue;">{{i*10+k}}</td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+
+          {%endif%}
+        </table>
+    </body>
+</html>

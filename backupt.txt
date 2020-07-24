@@ -1,0 +1,13 @@
+<!-- {%elif list[0] == "ALL DONE!!%}
+            {% for i in range(0,9)%}
+              <tr>
+                {% for k in range(1,11) %}
+                  {% if i*10+k in list %}
+                    <td style="background-color: skyblue;">{{i*10+k}}</td>
+                  {% else %}
+                    <td>{{i*10+k}}</td>
+                  {% endif %}
+                {% endfor %}
+              </tr>
+            {% endfor %}
+             -->
